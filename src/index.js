@@ -16,7 +16,7 @@ pool.query("SELECT NOW()", (err, res) => {
 
 const express = require("express");
 const server = express();
-const port = process.NODE_APP_ENV || 3000;
+const port = process.NODE_APP_PORT || 3000;
 
 server.get("/", (req, res) => res.send("Hello world"));
 server.listen(port, () => console.log(`listening on ${port}!!!`));
