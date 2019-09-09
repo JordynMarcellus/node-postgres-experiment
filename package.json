@@ -1,0 +1,17 @@
+{
+  "name": "full-stack-fantasy-hockey-picker",
+  "version": "1.0.0",
+  "description": "Every year I do this. Now I have more time to build it as a full-stack app ideally living in GCP. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js" 
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "install": "^0.13.0",
+    "npm": "^6.11.3"
+  }
+}
