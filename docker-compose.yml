@@ -2,20 +2,19 @@ version: "3"
 services:
   db:
     image: postgres:11.2-alpine
-    env_file:
-      - .env
+    env_file: development.postgres.env
     ports:
       - "5432:5432"
     volumes:
-      - "dbdata:/var/lib/postgresql/data"
+      - "psqldb:/var/lib/postgresql/data"
     restart: on-failure
   server:
     depends_on:
       - db
     env_file:
-      - .env
+      - development.server.env
     ports:
       - "3001:3001"
     build: .
 volumes:
-  dbdata:
+  psqldb:
