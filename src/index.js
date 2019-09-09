@@ -1,11 +1,16 @@
 require("dotenv").config();
+const { Pool } = require("pg");
 
-const { Pool, Client } = require("pg");
+console.log(process.env.DB_CONNECTION_STRING);
 
-const pool = new Pool();
+const pool = new Pool({
+  connectionString: process.env.DB_CONNECTION_STRING,
+});
 
 pool.query("SELECT NOW()", (err, res) => {
   console.log(err, res);
+  if (err) return process.exit(1);
+
   pool.end();
 });
 
@@ -14,4 +19,4 @@ const server = express();
 const port = process.NODE_APP_ENV || 3000;
 
 server.get("/", (req, res) => res.send("Hello world"));
-server.listen(port, () => console.log(`listening on ${port}`));
+server.listen(port, () => console.log(`listening on ${port}!!!`));
