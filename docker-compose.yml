@@ -14,7 +14,7 @@ services:
     env_file:
       - development.server.env
     ports:
-      - "3001:3001"
+      - "3000:3000"
     build: .
 volumes:
   psqldb:
