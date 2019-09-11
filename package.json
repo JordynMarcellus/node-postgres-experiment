@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "start": "node --inspect=0.0.0.0:5858 src/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +14,6 @@
     "express": "^4.17.1",
     "helmet": "^3.21.0",
     "install": "^0.13.0",
-    "npm": "^6.11.3",
     "pg": "^7.12.1",
     "sql-template-strings": "^2.2.2",
     "winston": "^3.2.1"

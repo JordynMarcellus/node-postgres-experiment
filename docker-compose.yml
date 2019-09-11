@@ -1,3 +1,4 @@
+# Useful resource for nodemon -> https://gist.github.com/ksmithut/e126f7ddb40b760487a17e8b569a77b5
 version: "3"
 services:
   db:
@@ -15,6 +16,7 @@ services:
       - development.server.env
     ports:
       - "3000:3000"
+      - "5858:5858"
     build: .
 volumes:
   psqldb:
