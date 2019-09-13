@@ -8,6 +8,7 @@ services:
       - "5432:5432"
     volumes:
       - "psqldb:/var/lib/postgresql/data"
+      - "./db-seed/init.sql:/docker-entrypoint-initdb.d/init.sql"
     restart: on-failure
   server:
     depends_on:
