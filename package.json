@@ -17,6 +17,7 @@
     "install": "^0.13.0",
     "nodemon": "^1.19.2",
     "pg": "^7.12.1",
+    "puppeteer": "^1.20.0",
     "sql-template-strings": "^2.2.2",
     "winston": "^3.2.1"
   }
