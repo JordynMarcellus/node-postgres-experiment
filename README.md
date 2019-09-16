@@ -1,6 +1,6 @@
 # Why?
 
-This is my first attempt at building, myself, a full-stack JS application. We are using node, express and postgres -- all containerized through docker.
+This is my first attempt at building, myself, a full-stack JS application using a relational database. We are using node, express and postgres -- all containerized through docker.
 
 ## Resources I've used so far
 
