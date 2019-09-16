@@ -4,10 +4,13 @@ require("dotenv").config({
 });
 
 const express = require("express");
+const helmet = require("helmet");
 const { getPlayersController } = require("./controllers/getPlayersController");
 
 const server = express();
 const port = process.env.NODE_APP_PORT || 3000;
+
+server.use(helmet());
 
 const tempCallback = (req, res) =>
   res.status(204).send("please excuse the mess!!!");
@@ -17,6 +20,7 @@ server.get("/players", getPlayersController);
 server.patch("/players", tempCallback);
 // create new player
 server.post("/players", tempCallback);
+// get stats and rankings i guess?
 server.get("/players/:playerId/details", tempCallback);
 server.get("*", (req, res) => res.status(400).send());
 
