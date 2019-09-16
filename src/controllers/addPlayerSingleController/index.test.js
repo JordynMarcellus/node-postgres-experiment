@@ -23,4 +23,17 @@ describe("addPlayerSingleController", () => {
     const calledFunction = await addPlayerSingleController(mockReq, mockRes);
     expect(dbConnector.query).toHaveBeenCalledWith(expectedQuery);
   });
+  it("handles errors gracefully", async () => {
+    const mockRes = {
+      send: jest.fn().mockReturnThis(),
+      status: jest.fn().mockReturnThis(),
+    };
+    const mockReq = {
+      body: { name: "Johnny Gaudreau" },
+    };
+    const error = new Error("can't find value");
+    dbConnector.query = jest.fn().mockRejectedValue(error);
+    const calledFunction = await addPlayerSingleController(mockReq, mockRes);
+    expect(mockRes.status).toHaveBeenCalledWith(500);
+  });
 });
