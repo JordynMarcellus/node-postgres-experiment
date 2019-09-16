@@ -2,13 +2,11 @@
 const { dbConnector } = require("../../db/db");
 const sql = require("sql-template-strings");
 
-const addPlayerQuery = name => {
-  return sql`INSERT 
+const addPlayerQuery = name => sql`INSERT 
         into 
         public.players (name)
         VALUES (${name})
         RETURNING *`;
-};
 
 exports.addPlayerSingleController = async (req, res) => {
   try {
