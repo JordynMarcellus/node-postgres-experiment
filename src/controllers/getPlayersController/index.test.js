@@ -26,5 +26,7 @@ describe("getPlayersController", () => {
     expect(dbConnector.query).toHaveBeenCalledWith(
       "SELECT * from public.players"
     );
+    expect(mockRes.status).toBeCalledWith(200);
+    expect(mockRes.send).toBeCalledWith(mockRow.rows);
   });
 });
