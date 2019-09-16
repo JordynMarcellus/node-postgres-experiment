@@ -19,11 +19,9 @@ describe("updatePlayerSingle", () => {
       },
       params: { playerId: "unique-identifier" },
     };
-
-    dbConnector.query = jest.fn().mockResolvedValue("hey hey hey");
+    dbConnector.query = jest.fn().mockResolvedValue(true);
     await updatePlayerSingle(mockReq, mockRes);
     expect(dbConnector.query).toBeCalledWith(expectedQuery);
     expect(mockRes.sendStatus).toHaveBeenCalledWith(200);
   });
-  //   it('handles error generically')
 });
