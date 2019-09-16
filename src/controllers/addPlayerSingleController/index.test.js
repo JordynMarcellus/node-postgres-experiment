@@ -5,7 +5,8 @@ const sql = require("sql-template-strings");
 const expectedQuery = sql`INSERT 
         into 
         public.players (player_name)
-        VALUES (${"Johnny Gaudreau"})`;
+        VALUES (${"Johnny Gaudreau"})
+        RETURNING *`;
 
 jest.mock("../../db/db");
 
