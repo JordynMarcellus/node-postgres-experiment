@@ -14,7 +14,7 @@ jest.mock("../../db/db.js");
 
 describe("getPlayersController", () => {
   afterEach(() => jest.clearAllMocks());
-  it("actually works? ", async () => {
+  it("grabs data from the db ", async () => {
     dbConnector.query = jest.fn().mockResolvedValue(mockRow);
     const mockRes = {
       send: jest.fn().mockReturnThis(),
@@ -29,4 +29,6 @@ describe("getPlayersController", () => {
     expect(mockRes.status).toBeCalledWith(200);
     expect(mockRes.send).toBeCalledWith(mockRow.rows);
   });
+  //   it('handles errors')
+  // optional -- it ('handles empty state')
 });
