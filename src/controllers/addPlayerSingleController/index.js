@@ -11,9 +11,14 @@ const addPlayerQuery = name => {
 };
 
 exports.addPlayerSingleController = async (req, res) => {
-  const { name } = req.body;
-  console.log(name);
-  const dbValue = await dbConnector.query(addPlayerQuery(name));
-  console.log(dbValue);
-  return res.status(500);
+  try {
+    const { name } = req.body;
+    console.log(name);
+    const dbValue = await dbConnector.query(addPlayerQuery(name));
+    console.log(dbValue);
+    return res.status(200);
+  } catch (e) {
+    console.error("error adding new player", e.stack);
+    return res.status(500).send();
+  }
 };
