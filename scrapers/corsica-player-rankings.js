@@ -46,7 +46,7 @@ const getDataFromTableRows = async tableRows => {
     );
     const defence = await getDataFromTableRows(defenceTableRows);
     console.log(defence);
-    // we have data, so let's create some data
+    // we have data, so let's create some csvs...
   } catch (e) {
     console.error("shutting down due to", e.message);
     console.error(e.stack);

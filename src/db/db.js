@@ -12,4 +12,4 @@ dbPool.connect((err, client, release) => {
   release();
 });
 
-export default dbPool;
+exports.dbConnector = dbPool;

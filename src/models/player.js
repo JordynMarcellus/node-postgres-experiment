@@ -25,4 +25,5 @@ export const player = {
     },
     // any other rankings we can snag we put them here.
   },
+  selected: boolean,
 };
