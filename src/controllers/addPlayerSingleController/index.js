@@ -6,7 +6,8 @@ const addPlayerQuery = name => {
   return sql`INSERT 
         into 
         public.players (player_name)
-        VALUES (${name})`;
+        VALUES (${name})
+        RETURNING *`;
 };
 
 exports.addPlayerSingleController = async (req, res) => {
