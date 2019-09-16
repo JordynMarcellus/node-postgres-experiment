@@ -1,18 +1,21 @@
 const path = require("path");
+const express = require("express");
+const helmet = require("helmet");
+const bodyParser = require("body-parser");
+
+const { getPlayersController } = require("./controllers/getPlayersController");
+const {
+  addPlayerSingleController,
+} = require("./controllers/addPlayerSingleController");
+
 require("dotenv").config({
   path: path.resolve(process.cwd(), "development.server.env"),
 });
 
-const express = require("express");
-const helmet = require("helmet");
-const { getPlayersController } = require("./controllers/getPlayersController");
-const {
-  addPlayerSingleController
-} = require("./controllers/addPlayerSingleController");
-
 const server = express();
 const port = process.env.NODE_APP_PORT || 3000;
 
+server.use(bodyParser());
 server.use(helmet());
 
 const tempCallback = (req, res) =>

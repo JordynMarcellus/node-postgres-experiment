@@ -22,6 +22,8 @@ describe("addPlayerSingleController", () => {
     dbConnector.query = jest.fn().mockResolvedValue("what's up");
     const calledFunction = await addPlayerSingleController(mockReq, mockRes);
     expect(dbConnector.query).toHaveBeenCalledWith(expectedQuery);
+    expect(mockRes.status).toHaveBeenCalledWith(201);
+    expect(mockRes.send).toHaveBeenCalled();
   });
   it("handles errors gracefully", async () => {
     const mockRes = {
