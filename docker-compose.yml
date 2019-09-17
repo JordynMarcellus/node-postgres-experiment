@@ -9,6 +9,7 @@ services:
     volumes:
       - "psqldb:/var/lib/postgresql/data"
       - "./db-seed/init.sql:/docker-entrypoint-initdb.d/init.sql"
+      - "./db-seed/test.csv:/docker-entrypoint-initdb.d/test.csv"
     restart: on-failure
   server:
     depends_on:
