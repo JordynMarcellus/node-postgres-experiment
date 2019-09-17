@@ -5,10 +5,11 @@ const WAIT_OPTIONS = { waitUntil: "networkidle2" };
 
 const grabTextContent = node => node.textContent;
 
-const PLAYER_NAME = 0;
-const PLAYER_POSITION = 2;
-const PLAYER_RATING = 3;
-const PLAYER_RANKING = 4;
+const PLAYER_NAME_INDEX = 0;
+const PLAYER_TEAM_INDEX = 1;
+const PLAYER_POSITION_INDEX = 2;
+const PLAYER_RATING_INDEX = 3;
+const PLAYER_RANK_INDEX = 4;
 
 const getDataFromTableRows = async tableRows => {
   const data = Promise.all(
@@ -38,15 +39,20 @@ const getDataFromTableRows = async tableRows => {
     );
     // have forwards ✅
     const forwards = await getDataFromTableRows(forwardTableRows);
-    console.log(forwards);
     await browserPage.click('a[data-position="defence"]');
     await browserPage.waitFor(1000 * 10);
     const defenceTableRows = await browserPage.$$(
       ".player-ratings-table.frozen-table tbody > tr"
     );
     const defence = await getDataFromTableRows(defenceTableRows);
-    console.log(defence);
-    // we have data, so let's create some csvs...
+    const skatersArray = [...forwards, ...defence].map(skater => ({
+      name: skater[PLAYER_NAME_INDEX],
+      position: skater[PLAYER_POSITION_INDEX],
+      team: skater[PLAYER_TEAM_INDEX],
+      rank: skater[PLAYER_RANK_INDEX],
+      rating: skater[PLAYER_RATING_INDEX],
+    }));
+    console.log(skatersArray);
   } catch (e) {
     console.error("shutting down due to", e.message);
     console.error(e.stack);
