@@ -9,7 +9,7 @@ RUN npm install
 
 COPY . ./
 
-EXPOSE 3000
+EXPOSE 9009
 EXPOSE 5858
 
 CMD npm run start:watch
