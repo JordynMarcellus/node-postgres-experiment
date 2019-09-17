@@ -23,7 +23,8 @@ const getDataFromTableRows = async tableRows => {
   );
   return data;
 };
-
+// Additional improvements: using readable streams to throw it to csv parsing/writing right away...
+// Would be MUCH better for memory
 (async () => {
   const browser = await puppeteer.launch({ headless: false });
 
