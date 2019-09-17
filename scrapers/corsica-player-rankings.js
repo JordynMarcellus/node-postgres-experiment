@@ -1,4 +1,5 @@
 const puppeteer = require("puppeteer");
+const { asyncParseCsv, asyncWriteCsv } = require("../services/asyncWriteCsv");
 const URL =
   "https://www.corsicahockey.com/nhl/players/nhl-player-ratings-rankings";
 const WAIT_OPTIONS = { waitUntil: "networkidle2" };
@@ -52,7 +53,9 @@ const getDataFromTableRows = async tableRows => {
       rank: skater[PLAYER_RANK_INDEX],
       rating: skater[PLAYER_RATING_INDEX],
     }));
-    console.log(skatersArray);
+    const csvString = await asyncParseCsv(skatersArray);
+    await asyncWriteCsv(csvString);
+    console.log("DONE");
   } catch (e) {
     console.error("shutting down due to", e.message);
     console.error(e.stack);
