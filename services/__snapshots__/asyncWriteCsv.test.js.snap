@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`asyncWriteCsv works as expected 1`] = `
+"\\"name\\",\\"position\\",\\"team\\",\\"rank\\",\\"rating\\"
+\\"Connor McDavid\\",\\"C\\",\\"EDM\\",1,89.34"
+`;

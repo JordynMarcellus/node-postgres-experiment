@@ -9,12 +9,6 @@ const options = { fields: ["name", "position", "team", "rank", "rating"] };
 // https://nodejs.org/api/stream.html#stream_writable_writablehighwatermark
 const transformOptions = { highWaterMark: 8192 };
 
-// const output = createWriteStream(__dirname + "/db-seed/test.csv", {
-//   encoding: "utf8",
-// });
-
-// const asyncParser = new AsyncParser(options, transformOptions);
-
 exports.asyncParseCsv = async jsonData => {
   const csvString = await parseAsync(jsonData, options)
     .then(csv => csv)
@@ -24,12 +18,6 @@ exports.asyncParseCsv = async jsonData => {
   return csvString;
 };
 exports.asyncWriteCsv = async csvString => {
-  //   const workingDirectory = process.cwd();
-  //   const writeLocation = path.resolve(
-  //     workingDirectory,
-  //     `${__dirname}/db-seed/test.csv`
-  //   );
-  //   console.log(writeLocation);
   try {
     await fs.writeFile("./db-seed/test.csv", csvString, { encoding: "utf-8" });
   } catch (e) {

@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { asyncWriteCsv } = require("./asyncWriteCsv");
+const { asyncParseCsv } = require("./asyncWriteCsv");
 const mockData = {
   name: "Connor McDavid",
   position: "C",
@@ -11,7 +11,7 @@ jest.mock("fs");
 
 describe("asyncWriteCsv", () => {
   it("works as expected", async () => {
-    const resutlt = await asyncWriteCsv([mockData]);
+    const result = await asyncParseCsv([mockData]);
     expect(result).toMatchSnapshot();
   });
 });
