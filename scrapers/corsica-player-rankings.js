@@ -42,7 +42,7 @@ const getDataFromTableRows = async tableRows => {
     // have skaters ✅
     const skaters = await getDataFromTableRows(forwardTableRows);
     const skatersArray = skaters.map(skater => ({
-      name: skater[PLAYER_NAME_INDEX],
+      name: skater[PLAYER_NAME_INDEX].toLowerCase(),
       position: skater[PLAYER_POSITION_INDEX],
       team: teamMap[skater[PLAYER_TEAM_INDEX]],
       rank: skater[PLAYER_RANK_INDEX],
