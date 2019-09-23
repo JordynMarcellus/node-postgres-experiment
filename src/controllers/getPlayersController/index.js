@@ -1,10 +1,13 @@
 const { dbConnector } = require("../../db/db");
 const sql = require("sql-template-strings");
-const defaultQuery = sql`SELECT * from public.players ORDER BY rating desc LIMIT 25`;
 // filter by: position
+
 exports.getPlayersController = async (req, res) => {
-  // filterPosition=[]
   const { query } = req;
+  const defaultQuery = sql`SELECT * from public.players`;
+  defaultQuery.append(sql` WHERE selected = 'false'`);
+  defaultQuery.append(sql` ORDER BY rating desc LIMIT 25`);
+
   try {
     const { rows } = await dbConnector
       .query(defaultQuery)
