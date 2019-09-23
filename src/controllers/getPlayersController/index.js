@@ -1,16 +1,39 @@
 const { dbConnector } = require("../../db/db");
 const sql = require("sql-template-strings");
 // filter by: position
+// AND position = ANY('{RD,C,LW}')
+const defaultSort = sql` ORDER BY rating desc LIMIT 25`;
+
+const buildQuery = (queryObject = {}) => {
+  const { filter, sort } = queryObject;
+  const query = sql`SELECT * from public.players`;
+  query.append(sql` WHERE selected = 'false'`);
+  if (Object.keys(queryObject).length === 0) {
+    query.append(defaultSort);
+    return query;
+  }
+
+  // validation would be nice here >.>
+  if (filter) {
+    // ironically need to arrayify this sucker
+    // const filterArray = filter.split(",");
+    query.append(sql` AND position = ANY('{LW,RW,C}'::text[])`);
+  }
+
+  // query.append(
+  //   sql` ORDER BY rating ${sort ? `${sort.toLowerCase()}` : "desc"} LIMIT 25`
+  // );
+  console.log(query);
+  return query;
+};
 
 exports.getPlayersController = async (req, res) => {
   const { query } = req;
-  const defaultQuery = sql`SELECT * from public.players`;
-  defaultQuery.append(sql` WHERE selected = 'false'`);
-  defaultQuery.append(sql` ORDER BY rating desc LIMIT 25`);
-
+  console.log(query);
+  const builtQuery = buildQuery(query);
   try {
     const { rows } = await dbConnector
-      .query(defaultQuery)
+      .query(builtQuery)
       .then(res => res)
       .catch(e => {
         throw e;
