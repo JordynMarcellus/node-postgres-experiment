@@ -45,7 +45,7 @@ describe("getPlayersController", () => {
         "RD",
         "C",
         "LW",
-      ]}::text[]) ORDER BY rating ${"asc"} LIMIT 25`
+      ]}::text[]) ORDER BY rating desc LIMIT 25`
     );
     expect(mockRes.status).toBeCalledWith(200);
     expect(mockRes.send).toBeCalledWith(mockRow.rows);

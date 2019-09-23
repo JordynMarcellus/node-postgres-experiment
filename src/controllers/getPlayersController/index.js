@@ -19,11 +19,10 @@ const buildQuery = (queryObject = {}) => {
     const filterArray = filter.split(",");
     query.append(sql` AND position = ANY (${filterArray}::text[])`);
   }
-
-  console.log(sort);
-
-  query.append(sql` ORDER BY rating desc LIMIT 25`);
-  console.log(query);
+  // postgres straight up doesn't let you sort parameterized 😂
+  // so we'll kill it because we don't need it
+  // this is because those are sort keywords, which means that we can't parametrize them! 🤓
+  query.append(defaultSort);
   return query;
 };
 
