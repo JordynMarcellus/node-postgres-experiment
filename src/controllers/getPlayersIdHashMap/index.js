@@ -3,7 +3,6 @@ const sql = require("sql-template-strings");
 
 exports.getPlayersIdHashMapController = async (req, res) => {
   const defaultQuery = sql`SELECT * from public.players ORDER BY name`;
-  console.log(req);
   try {
     const { rows } = await dbConnector
       .query(defaultQuery)
@@ -15,7 +14,6 @@ exports.getPlayersIdHashMapController = async (req, res) => {
     rows.forEach(row => {
       responseObj[row.name.toLowerCase()] = row.id;
     });
-    console.log(responseObj);
     return res.status(200).send(responseObj);
   } catch (e) {
     console.error("error executing query", e.stack);

@@ -14,7 +14,6 @@ exports.updatePlayerSingle = async (req, res) => {
       .catch(e => {
         throw e;
       });
-    console.log(dbValue);
     return res.sendStatus(200);
   } catch (e) {
     console.error(e);
