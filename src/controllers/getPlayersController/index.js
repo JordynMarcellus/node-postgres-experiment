@@ -15,9 +15,8 @@ const buildQuery = (queryObject = {}) => {
 
   // validation would be nice here >.>
   if (filter) {
-    // ironically need to arrayify this sucker
-    // const filterArray = filter.split(",");
-    query.append(sql` AND position = ANY('{LW,RW,C}'::text[])`);
+    // we need to specify it's a text array 🤓
+    query.append(` AND position = ANY('{${filter}}'::text[])`);
   }
 
   // query.append(
