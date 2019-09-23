@@ -2,7 +2,7 @@ const { dbConnector } = require("../../db/db");
 const sql = require("sql-template-strings");
 
 exports.getPlayersIdHashMapController = async (req, res) => {
-  const defaultQuery = sql`SELECT * from public.players`;
+  const defaultQuery = sql`SELECT * from public.players ORDER BY name`;
   console.log(req);
   try {
     const { rows } = await dbConnector
