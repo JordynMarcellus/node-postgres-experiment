@@ -30,6 +30,7 @@ const teamMap = {
   "Vegas Golden Knights": "VGK",
   "Washington Capitals": "WSH",
   "Winnipeg Jets": "WPG",
+  "Free Agent": "FA",
 };
 
 module.exports = teamMap;
