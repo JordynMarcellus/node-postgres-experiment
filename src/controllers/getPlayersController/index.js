@@ -20,17 +20,15 @@ const buildQuery = (queryObject = {}) => {
     query.append(sql` AND position = ANY (${filterArray}::text[])`);
   }
 
-  // query.append(
-  //   sql` ORDER BY rating ${sort ? `${sort.toLowerCase()}` : "desc"} LIMIT 25`
-  // );
+  query.append(
+    sql` ORDER BY rating ${sort ? `${sort.toLowerCase()}` : "desc"} LIMIT 25`
+  );
   return query;
 };
 
 exports.getPlayersController = async (req, res) => {
   const { query } = req;
-  console.log(query);
   const builtQuery = buildQuery(query);
-  console.log(builtQuery);
   try {
     const { rows } = await dbConnector
       .query(builtQuery)

@@ -41,11 +41,11 @@ describe("getPlayersController", () => {
     const calledFunction = await getPlayersController(mockReq, mockRes);
     expect(dbConnector.query).toHaveBeenCalled();
     expect(dbConnector.query).toHaveBeenCalledWith(
-      sql`SELECT * from public.players WHERE selected = 'false' AND position = ANY('{${[
+      sql`SELECT * from public.players WHERE selected = 'false' AND position = ANY (${[
         "RD",
         "C",
         "LW",
-      ]}}') ORDER BY rating ${"asc"} LIMIT 25`
+      ]}::text[]) ORDER BY rating ${"asc"} LIMIT 25`
     );
     expect(mockRes.status).toBeCalledWith(200);
     expect(mockRes.send).toBeCalledWith(mockRow.rows);
