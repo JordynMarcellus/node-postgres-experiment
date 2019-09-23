@@ -8,6 +8,10 @@ const { updatePlayerSingle } = require("../controllers/updatePlayerSingle");
 const {
   getPlayersIdHashMapController,
 } = require("../controllers/getPlayersIdHashMap");
+const {
+  searchForPlayerController,
+} = require("../controllers/searchForPlayerController");
+
 const router = express.Router();
 const tempCallback = (req, res) =>
   res.status(204).send("please excuse the mess!!!");
@@ -15,6 +19,7 @@ const tempCallback = (req, res) =>
 // ✅
 router.get("/players", getPlayersController);
 router.get("/playersId", getPlayersIdHashMapController);
+router.get("/players/search", searchForPlayerController);
 // create new player -- not implemented in UI (yet)
 router.post("/players", addPlayerSingleController);
 // update player -- indicating a player has been selected. future potential for expansion. ✅
