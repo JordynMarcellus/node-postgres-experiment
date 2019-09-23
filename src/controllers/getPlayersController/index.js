@@ -20,9 +20,10 @@ const buildQuery = (queryObject = {}) => {
     query.append(sql` AND position = ANY (${filterArray}::text[])`);
   }
 
-  query.append(
-    sql` ORDER BY rating ${sort ? `${sort.toLowerCase()}` : "desc"} LIMIT 25`
-  );
+  console.log(sort);
+
+  query.append(sql` ORDER BY rating desc LIMIT 25`);
+  console.log(query);
   return query;
 };
 
