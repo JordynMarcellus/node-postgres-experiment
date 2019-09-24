@@ -5,9 +5,12 @@ const sql = require("sql-template-strings");
 const defaultSort = sql` ORDER BY rating desc LIMIT 25`;
 
 const buildQuery = (queryObject = {}) => {
-  const { filter, sort } = queryObject;
+  const { filter } = queryObject;
+
   const query = sql`SELECT * from public.players`;
+
   query.append(sql` WHERE selected = 'false'`);
+
   if (Object.keys(queryObject).length === 0) {
     query.append(defaultSort);
     return query;
@@ -21,7 +24,7 @@ const buildQuery = (queryObject = {}) => {
   }
   // postgres straight up doesn't let you sort parameterized 😂
   // so we'll kill it because we don't need it
-  // this is because those are sort keywords, which means that we can't parametrize them! 🤓
+  // this is because sort values are keywords, which means that we can't parametrize them! 🤓
   query.append(defaultSort);
   return query;
 };

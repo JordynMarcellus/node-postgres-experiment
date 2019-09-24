@@ -18,10 +18,14 @@ const tempCallback = (req, res) =>
 
 // ✅
 router.get("/players", getPlayersController);
+// ✅
 router.get("/playersId", getPlayersIdHashMapController);
+// ✅
 router.get("/players/search", searchForPlayerController);
-// create new player -- not implemented in UI (yet)
+
+// create new player -- not implemented in UI (yet). can be programmatic for services and the like.
 router.post("/players", addPlayerSingleController);
+
 // update player -- indicating a player has been selected. future potential for expansion. ✅
 router.patch("/players/:playerId", updatePlayerSingle);
 
