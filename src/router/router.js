@@ -11,6 +11,9 @@ const {
 const {
   searchForPlayerController,
 } = require("../controllers/searchForPlayerController");
+const {
+  updatePlayerSingleStatsController,
+} = require("../controllers/updatePlayerSingleStatsController");
 
 const router = express.Router();
 const tempCallback = (req, res) =>
@@ -39,7 +42,7 @@ router.get("/players/:playerId/historical", tempCallback);
 // 2017
 // 2018
 // aggregate
-router.put("/players/:playerId/historical", tempCallback);
+router.put("/players/:playerId/stats", updatePlayerSingleStatsController);
 // every other endpoint hit gets a bad request
 router.get("*", (req, res) => res.status(400).send());
 
