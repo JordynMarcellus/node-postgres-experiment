@@ -7,7 +7,7 @@ exports.searchForPlayerController = async (req, res) => {
   try {
     const searchQuery = `${query.q}:*`;
     const response = await dbConnector.query(
-      sql`SELECT * from public.players WHERE to_tsvector(name) @@ to_tsquery(${searchQuery})`
+      sql`SELECT * from public.players WHERE to_tsvector(name) @@ to_tsquery(${searchQuery}) ORDER BY name asc`
     );
     const { rows } = response;
     return res.status(200).json({ data: rows });
