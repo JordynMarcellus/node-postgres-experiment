@@ -5,8 +5,10 @@ const fs = require("fs");
 const { parseAsync } = require("json2csv");
 
 const csvPath = path.resolve(process.cwd(), "data/playerG60Aggregate.csv");
-const knownOptions = { fields: ["id", "gamesPlayed", "timeOnIce", "garSixty"] };
-const unknownOptions = { fields: ["Player"] };
+const knownOptions = {
+  fields: ["id", "name", "gamesPlayed", "timeOnIce", "garSixty"],
+};
+const unknownOptions = { fields: ["name"] };
 
 const convert = async () => {
   const csv = csvConvertor();
@@ -22,6 +24,7 @@ const convert = async () => {
         if (playerId) {
           const object = {
             id: playerId,
+            name: transformedPlayerName,
             gamesPlayed: currentPlayerObject["GP"],
             timeOnIce: currentPlayerObject["TOI"],
             garSixty: currentPlayerObject["GAR/60"],
@@ -29,7 +32,7 @@ const convert = async () => {
           objectWithArrays.known.push(object);
           return objectWithArrays;
         }
-        objectWithArrays.unknown.push({ ...currentPlayerObject });
+        objectWithArrays.unknown.push({ name: transformedPlayerName });
         return objectWithArrays;
       },
       { known: [], unknown: [] }
