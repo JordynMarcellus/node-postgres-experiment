@@ -8,7 +8,7 @@ dbPool.connect((err, client, release) => {
   if (err) {
     console.log("client connection issue", err.stack);
   }
-  console.log("successfuly connection");
+  console.log("successful connection");
   release();
 });
 
