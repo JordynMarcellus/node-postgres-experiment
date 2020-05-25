@@ -25,5 +25,5 @@ services:
       - .:/usr/src/app
     build: .
 
-  volumes:
+volumes:
   psqldb:
