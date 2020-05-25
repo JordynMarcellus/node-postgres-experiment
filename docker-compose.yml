@@ -19,7 +19,7 @@ services:
     env_file:
       - development.server.env
     ports:
-      - "9009:9009"
+      - "3000:3000"
       - "5858:5858"
     volumes:
       - .:/usr/src/app

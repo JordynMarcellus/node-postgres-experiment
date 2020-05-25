@@ -7,6 +7,7 @@ This is my first attempt at building, myself, a full-stack JS application using 
 You will need a few things:
 - Docker engine: https://docs.docker.com/engine/install/
 - Docker compose: https://docs.docker.com/compose/install/
+    - If you're on Linux, https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user will come in very handy
 - Environment files: Ask Jordyn for now since they have these in the form that works best
 - Node & npm: https://nodejs.org/en/ (after this just type `npm install` in the root folder for all the packages you will need)
 
