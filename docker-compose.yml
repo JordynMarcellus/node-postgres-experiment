@@ -1,6 +1,7 @@
 # Useful resource for nodemon -> https://gist.github.com/ksmithut/e126f7ddb40b760487a17e8b569a77b5
 version: "3"
 services:
+  
   db:
     image: postgres:11.2-alpine
     env_file: development.postgres.env
@@ -11,16 +12,18 @@ services:
       - "./db-seed/init.sql:/docker-entrypoint-initdb.d/init.sql"
       - "./db-seed/test.csv:/docker-entrypoint-initdb.d/test.csv"
     restart: on-failure
+  
   server:
     depends_on:
       - db
     env_file:
       - development.server.env
     ports:
-      - "9009:9009"
+      - "3000:3000"
       - "5858:5858"
     volumes:
       - .:/usr/src/app
     build: .
+
 volumes:
   psqldb:

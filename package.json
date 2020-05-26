@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "node --inspect=0.0.0.0:5858 src/index.js",
-    "start:watch": "./node_modules/.bin/nodemon --inspect=0.0.0.0:5858 src src/index.js"
+    "start:watch": "./node_modules/.bin/nodemon --inspect src src/index.js"
   },
   "author": "",
   "license": "ISC",
